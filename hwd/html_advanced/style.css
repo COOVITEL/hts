@@ -1,0 +1,10 @@
+body {
+    margin: 0px;
+}
+
+.main_part {
+    background-image: url('images/Bitmap.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1093px;
+}
