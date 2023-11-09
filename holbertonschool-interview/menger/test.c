@@ -8,11 +8,11 @@
 *
 *
 */
-void print_menger(int posx, int posy, int col, int row, int c1, int r1, int r2, int c2, int r3, int c3, int r4, int c4) {
-   if ((posx == 2 && posy == 2) || (col == 2 && row == 2) || (c1 == 2 && r1 == 2) || (c2 == 2 && r2 == 2) || (c3 == 2 && r3 == 2) || (c4 == 2 && r4 == 2))
+void print_menger(int posx, int posy, int col, int row, int c1, int r1, int r2, int c2, int r3, int c3) {
+   if ((posx == 2 && posy == 2) || (col == 2 && row == 2) || (c1 == 2 && r1 == 2) || (c2 == 2 && r2 == 2) || (c3 == 2 && r3 == 2))
        printf(" ");
    else
-       printf("#");
+       printf(".");
 }
 
 void menger(int level)
@@ -46,12 +46,7 @@ for (y = 1; y <= size; y++)
             r3++;
         }
         if (r3 == 4)
-        {
             r3 = 1;
-            r4++;
-        }
-        if (r4 == 4)
-            r4 = 1;
         if (c1 == 4)
         {
             c1 = 1;
@@ -63,16 +58,10 @@ for (y = 1; y <= size; y++)
             c3++;
         }
         if (c3 == 4)
-        {
             c3 = 1;
-            c4++;
-        }
-        if (c4 == 4)
-            c4 = 1;
-        print_menger(posx, posy, col, row, c1, r1, r2, c2, r3, c3, r4, c4);
+        print_menger(posx, posy, col, row, c1, r1, r2, c2, r3, c3);
         posx++;
     }
-    c4 = 1;
     c3 = 1;
     c2 = 1;
     c1 = 1;
@@ -95,11 +84,6 @@ for (y = 1; y <= size; y++)
     {
         c2 = 1;
         c3++;
-    }
-    if (c3 == 4)
-    {
-        c3 = 1;
-        c4++;
     }
     printf("\n");
     posy++;
