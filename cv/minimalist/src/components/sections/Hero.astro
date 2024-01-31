@@ -1,0 +1,77 @@
+---
+import { basics } from '@cv'
+import Section from '@/components/Section.astro'
+import Phone from '@/icons/Phone.astro'
+import Email from '@/icons/Email.astro'
+import GitHub from '@/icons/GitHub.astro'
+import LinkedIn from '@/icons/LinkedIn.astro'
+
+const { name, label, image, email, phone, profiles, location } = basics
+const { region, city } = location
+
+const SOCIAL_ICONS: Record<string, any> = {
+    GitHub,
+    LinkedIn,
+}
+
+---
+
+<Section >
+    <div class="container">
+        <div class="info">
+            <h1>{name}</h1>
+            <h2>{label}</h2>
+            <span>
+                {city}, {region}
+            </span>
+            <footer>
+                {
+                    email && (
+                        <a
+                            href={`mailto: ${email}`}
+                            title={`Enviar un correo electronico a ${name} al correo ${email}`}
+                            target="_blank"
+                            rel="noopener noreferrrer"
+                        >
+                        <Email />
+                        </a>
+                    )
+                }
+                {
+                    phone && (
+                        <a
+                            href={`tel: ${phone}`}
+                            title={`Llamar a ${name} al numero ${phone}`}
+                            target="_blank"
+                            rel="noopener noreferrrer"
+                        >
+                        <Phone />
+                        </a>
+                    ) 
+                }
+                {
+                    profiles.map(({ network, url, username }) => {
+                    const Icon = SOCIAL_ICONS[network]
+
+                    return (
+                        <a
+                        href={url}
+                        title={`Visitar el perfil de ${name} en ${network}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                        <Icon />
+                        </a>
+                    )
+                    })
+                }
+            </footer>
+        </div>
+        <figure>
+            <img src={image} alt={name}>
+        </figure>
+    </div>
+</Section>
+
+<style>
+</style>

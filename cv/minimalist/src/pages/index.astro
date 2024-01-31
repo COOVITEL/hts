@@ -1,0 +1,30 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import About from '@/components/sections/About.astro';
+import Educations from '@/components/sections/Educations.astro';
+import Experience from '@/components/sections/Experience.astro';
+import Skills from '@/components/sections/Skills.astro';
+import Projects from '@/components/sections/Projects.astro';
+import KeyBoardManager from '@/components/KeyBoardManager.astro'
+---
+
+<Layout title="Manu Minimalist Porfo">
+	<main>
+		<Hero />
+		<About />
+		<Experience />
+		<Educations />
+		<Projects />
+		<Skills />
+	</main>
+	<KeyBoardManager />
+</Layout>
+
+<style>
+	main {
+		padding: 4rem;
+		margin: auto;
+		width: 100%;
+	}
+</style>
