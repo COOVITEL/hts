@@ -13,6 +13,7 @@ class PostListView(ListView):
     paginate_by = 3
     template_name = 'blog/post/list.html'
 
+
 def post_list(request):
     """"""
     post_list = Post.published.all()
@@ -23,6 +24,7 @@ def post_list(request):
     except (EmptyPage, PageNotAnInteger):
         posts = paginator.page(1)
     return render(request, 'blog/post/list.html', {'posts': posts})
+
 
 def post_detail(request, year, month, day, post):
     """"""
@@ -54,6 +56,7 @@ def post_share(request, post_id):
     else:
         form = EmailPostForm()
     return render(request, 'blog/post/share.html', {'post': post, 'form': form, 'sent': sent})
+
 
 @require_POST
 def post_comment(request, post_id):
