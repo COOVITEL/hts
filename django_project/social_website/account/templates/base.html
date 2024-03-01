@@ -15,7 +15,7 @@
                         <a href="{% url "dashboard" %}">My dashboard</a>
                     </li>
                     <li {% if section == "images" %}class="selected"{% endif %}>
-                        <a href="#">Images</a>
+                        <a href="{% url "edit" %}">Edit</a>
                     </li>
                     <li {% if section == "people" %}class="selected"{% endif %}>
                         <a href="#">People</a>
@@ -30,8 +30,19 @@
                     <a href="{% url "login" %}">Login</a>
             {% endif %}
             </span>
+            
         </div>
         <div id="content">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags}}">
+                        {{ message|safe }}
+                        <a href="{% url "dashboard" %}" class="close">x</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         {% block content %}
         {% endblock %}
         </div>
